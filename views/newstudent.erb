@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>New</title>
+</head>
+<body>
+   
+   <h3>Add new student</h3>
+
+<form action="/squads/<%= @id %>/students" method="POST">
+   <li><label for="name">New student name:</label>
+   <input type="text" name="name" autofocus required></li>
+   
+   <li><label for="age">Age:</label>
+   <input type="text" name="age"></li>
+
+   <li><label for="animal">Spirit Animal:</label>
+   <input type="text" name="animal" ></li>
+   
+   <li><label for="age">Squad ID:</label>
+   <input type="text" name="squad_id" value="<%= @id %>" required disabled></li>
+
+   <input type="submit" value="add">
+</form>
+
+<form action="/squads/<%= @id %>/students">
+   <input type="submit" value="Squad <%= @id %> List">
+</form>
+
+<form action="/squads">
+   <input type="submit" value="Squads List">
+</form>
+
+
+
+</body>
+</html>

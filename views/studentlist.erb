@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <title>Document</title>
+</head>
+<body>
+   
+
+
+<h3>List of Students in squad:<%= @squad[0]["name_sq"] %> </h3>
+<h4>The mascot is <%= @squad[0]["mascot"] %></h4>
+
+
+
+<% @squad.each do |student| %>
+  <li>Student: <%= student["name_stu"] %>
+   <a href="/squads/<%= student["id_sq"] %>/students/<%= student["id_stu"] %>">Info</a>
+   <a href="/squads/<%= student["id_sq"] %>/students/<%= student["id_stu"] %>/edit">Edit</a>
+   </li>
+<% end %>
+
+
+
+<br>
+   <a href="/squads/<%= @squad[0]["id_sq"] %>/newstudent">Add new Student</a> 
+<br>
+
+
+<form action="/squads">
+   <input type="submit" value="Squads List">
+</form>
+
+
+</body>
+</html>

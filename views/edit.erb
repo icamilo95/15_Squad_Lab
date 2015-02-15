@@ -10,10 +10,10 @@
 <h3>Edit Squad</h3>
 
  
-<form action="/squads/<%= @squad["unique_id"] %>" method="POST">
+<form action="/squads/<%= @squad["id_sq"] %>" method="POST">
    <input type="hidden" name="_method" value="PUT">
    <label for="name">Edit Name: </label>
-   <input type="text" value="<%= @squad["name"] %>" name="name">
+   <input type="text" value="<%= @squad["name_sq"] %>" name="name">
    <label for="name">Edit mascot:</label>
    <input type="text" value="<%= @squad["mascot"] %>" name="mascot">
    <input type="submit" name="edit">

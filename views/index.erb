@@ -11,14 +11,21 @@
 
 <ul>
 <%   @squads.each do |squad|   %>
-<li>Name: <%= squad["name"] %>     - Mascot: <%= squad["mascot"] %> - <a href="/squads/<%= squad["unique_id"] %> ">Show</a> - <a href="/squads/<%= squad["unique_id"] %>/edit">Edit</a> </li>
+<li>Name: <%= squad["name_sq"] %>     
+
+- <a href="/squads/<%= squad["id_sq"] %>/students ">Students</a> 
+- <a href="/squads/<%= squad["id_sq"] %> ">Show</a> 
+- <a href="/squads/<%= squad["id_sq"] %>/edit">Edit</a> </li>
 <% end %>
 </ul>
 
 
 
+
+
 <p>
    <a href="/squads/new">Add new Squad</a> 
+
 </p>
 
 </body>

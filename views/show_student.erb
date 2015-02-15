@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <title>Document</title>
+</head>
+<body>
+   
+<h3>Student Info</h3>
+
+   <li>Name: <%= @student["name_stu"] %> </li>
+   <li>Age: <%= @student["age"] %></li>
+   <li>Spirit animal: <%= @student["spirit_animal"] %></li>
+
+   <form action="/squads/<%= @student["squad_id"] %>/students">
+      <input type="submit" value="Squad <%= @student["squad_id"] %> List">
+   </form>
+   
+   
+
+   <form action="/squads">
+   <input type="submit" value="Squads List">
+   </form>
+
+</body>
+</html>
+
+
+
+
