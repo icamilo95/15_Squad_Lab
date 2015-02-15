@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <title>index</title>
+</head>
+<body>
+   
+
+<h3>List of squads</h3>
+
+<ul>
+<%   @squads.each do |squad|   %>
+<li>Name: <%= squad["name"] %>     - Mascot: <%= squad["mascot"] %> - <a href="/squads/<%= squad["unique_id"] %> ">Show</a> - <a href="/squads/<%= squad["unique_id"] %>/edit">Edit</a> </li>
+<% end %>
+</ul>
+
+
+
+<p>
+   <a href="/squads/new">Add new Squad</a> 
+</p>
+
+</body>
+</html>

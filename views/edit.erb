@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <title>Edit</title>
+</head>
+<body>
+   
+
+<h3>Edit Squad</h3>
+
+ 
+<form action="/squads/<%= @squad["unique_id"] %>" method="POST">
+   <input type="hidden" name="_method" value="PUT">
+   <label for="name">Edit Name: </label>
+   <input type="text" value="<%= @squad["name"] %>" name="name">
+   <label for="name">Edit mascot:</label>
+   <input type="text" value="<%= @squad["mascot"] %>" name="mascot">
+   <input type="submit" name="edit">
+
+</form>
+
+
+
+
+
+
+</body>
+</html>
