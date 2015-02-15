@@ -66,7 +66,7 @@ post '/squads/:id/students' do
    
    @conn.exec("INSERT INTO students (name_stu,age,spirit_animal,squad_id) VALUES ($1,$2,$3,$4)",[params[:name],params[:age].to_i,params[:animal],id.to_i])
 
-redirect to '/'
+redirect to '/squads/'<< id << '/students'
 end
 
 #------------ SHOW SQUAD
@@ -135,28 +135,29 @@ put '/squads/:id_sq/students' do
    age = params[:age]
    animal = params[:animal]
    squad_id = params[:squad_id]
-   number_students = @conn.exec("SELECT COUNT (id_stu) FROM students",[])
-   # Checking if students is 0
-   binding.pry
-   if number_students[0] > 0
-      @conn.exec("UPDATE students SET name_stu=($1),age=($2),spirit_animal=($3),squad_id=($4) WHERE id_stu=($5) ",[name,age,animal,squad_id,id])  
-      redirect to '/'
-  else
-   "Squad cannot be empty. This is the last student"
-   end
-   
-       
-   
+  
+   @conn.exec("UPDATE students SET name_stu=($1),age=($2),spirit_animal=($3),squad_id=($4) WHERE id_stu=($5) ",[name,age,animal,squad_id,id])  
+   redirect to '/squads/' << squad_id << '/students'
+    
 end
 
+#------------ DELETE SQUAD
 
+delete '/squads/:id_sq' do
+   id = params[:id_sq].to_i
+   @conn.exec("DELETE FROM squads WHERE id_sq=($1)",[id])
+   redirect to '/'
+end
 
+#------------ DELETE STUDENT
 
+delete '/squads/:squad_id/students/:id_stu' do
+   id = params[:id_stu].to_i
+   squad_id = params[:squad_id]
+   @conn.exec("DELETE FROM students WHERE id_stu=($1)",[id])
+   redirect to '/squads/' << squad_id << '/students'
 
-
-
-
-
+end
 
 
 

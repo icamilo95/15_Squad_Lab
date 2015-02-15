@@ -16,7 +16,7 @@
    <label for="name">Edit Name: </label>
    <input type="text" value="<%= @student["name_stu"] %>" name="name">
    <label for="name">Edit age: </label>
-   <input type="text" value="<%= @student["age"] %>" name="age">
+   <input type="number" value="<%= @student["age"] %>" name="age">
    <label for="name">Edit spirit animal: </label>
    <input type="text" value="<%= @student["spirit_animal"] %>" name="animal">
    <label for="name">Edit squad Id: </label>
@@ -25,7 +25,10 @@
 
 </form>
 
-
+<form action="/squads/<%= @student["squad_id"] %>/students/<%= @student["id_stu"] %>" method="POST">
+   <input type="hidden" name="_method" value="DELETE">
+   <input type="submit" value="Delete">
+</form>
 
 
 
