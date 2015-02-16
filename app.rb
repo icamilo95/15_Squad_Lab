@@ -50,7 +50,6 @@ get '/squads/:id/newstudent' do
 
 end
 
-
 #------------ CREATE NEW SQUAD
 
 post '/squads' do 
@@ -75,7 +74,7 @@ get '/squads/:id_sq' do
    id = params[:id_sq].to_i
      squad = @conn.exec("SELECT * FROM squads WHERE id_sq=($1)",[id])
      @squad = squad[0]    
-   erb :show
+     erb :show
 end
 
 #------------ EDIT SQUAD
@@ -94,18 +93,22 @@ put '/squads/:id_sq' do
    name = params[:name]
    mascot = params[:mascot]
    @conn.exec("UPDATE squads SET name_sq=($1),mascot=($2) WHERE id_sq=($3)",[name,mascot,id])
-       
    redirect to '/'
 end
 
 #------------ SHOW STUDENTS FROM INDIVIDUAL SQUAD
 
 get '/squads/:id_sq/students' do
-   id = params[:id_sq].to_i
-     squad = @conn.exec("SELECT * FROM squads JOIN students ON squads.id_sq = students.squad_id WHERE id_sq=($1) ORDER BY id_stu ASC",[id])
-     @squad = squad
-
-   erb :studentlist
+   id = params[:id_sq].to_i        
+   number_students = @conn.exec("SELECT COUNT (name_stu) FROM students WHERE squad_id=$1",[id])
+   if number_students[0]["count"].to_i == 0
+     @id_sq = id 
+     erb :message_new_stu
+   else
+      squad = @conn.exec("SELECT * FROM squads JOIN students ON squads.id_sq = students.squad_id WHERE id_sq=($1) ORDER BY id_stu ASC",[id])
+      @squad = squad
+      erb :studentlist
+   end
 end
 
 #------------ SHOW STUDENTS FROM INDIVIDUAL SQUAD
@@ -145,8 +148,13 @@ end
 
 delete '/squads/:id_sq' do
    id = params[:id_sq].to_i
-   @conn.exec("DELETE FROM squads WHERE id_sq=($1)",[id])
-   redirect to '/'
+   number_studentes = @conn.exec("SELECT COUNT (name_stu) FROM students WHERE squad_id=$1",[id])
+   if number_studentes[0]["count"].to_i == 0
+      @conn.exec("DELETE FROM squads WHERE id_sq=($1)",[id])
+      redirect to '/'   
+   else
+      "This Squad still contains students. It can't be deleted"
+   end
 end
 
 #------------ DELETE STUDENT

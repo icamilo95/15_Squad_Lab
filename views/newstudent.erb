@@ -21,11 +21,11 @@
    <li><label for="age">Squad ID:</label>
    <input type="text" name="squad_id" value="<%= @id %>" required disabled></li>
 
-   <input type="submit" value="add">
+   <input type="submit" value="Add">
 </form>
-
+<br>
 <form action="/squads/<%= @id %>/students">
-   <input type="submit" value="Squad <%= @id %> List">
+   <input type="submit" value="Squad <%= @id %>">
 </form>
 
 <form action="/squads">
