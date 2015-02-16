@@ -1,38 +1,60 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<title>New</title>
-</head>
+<%= erb :'partials/_header' %>
 <body>
    
-   <h3>Add new student</h3>
+  
+<div class="col-xs-7">
+<div class="panel panel-success">
+  <div class="panel-heading">
+    <h3 class="panel-title">Add new student</h3>
+  </div>
+  <div class="panel-body">
+      <form action="/squads/<%= @id %>/students" method="POST">
 
-<form action="/squads/<%= @id %>/students" method="POST">
-   <li><label for="name">New student name:</label>
-   <input type="text" name="name" autofocus required></li>
+         <label for="name">New student name:</label>
+         <input type="text" name="name" class="form-control" autofocus required>
+
+         <label for="age">Age:</label>
+         <input type="number" class="form-control" name="age">
+         
+         <label for="animal">Spirit Animal:</label>
+         <input type="text" class="form-control" name="animal" ><br>
+         
+         <div class="row">
+            <div class="col-xs-3 " style="margin-top:7px">
+               <b> Check if leader</b> <input type="checkbox"  name="leader" >
+            </div>
+            <div class="col-xs-2">
+               <label for="age" style="margin-top:7px">Squad ID:</label>
+            </div>   
+            <div class="col-xs-2">
+               <input type="text"  class="form-control" name="squad_id" value="<%= @id %>" required disabled>
+            </div>
+         </div><br>
+
+         <input type="submit" value="Add student" class="btn btn-success">
+      </form> 
+   </div>
+</div>
    
-   <li><label for="age">Age:</label>
-   <input type="number" name="age"></li>
-
-   <li><label for="animal">Spirit Animal:</label>
-   <input type="text" name="animal" ></li>
+   <div class="panel panel-default">
+    <div class="panel-body">
+       <div class="row">
+         <div class="col-xs-1 "></div>
+         <div class="col-xs-4 ">
+            <form action="/squads/<%= @id %>/students">
+               <input type="submit" value="Back to squad <%= @id %>" class="btn btn-primary">
+            </form>
+         </div>
+         <div class="col-xs-2 ">
+            <form action="/squads">
+               <input type="submit" value="Back squads list" class="btn btn-warning">
+            </form>
+         </div>
+         </div>         
+    </div>
+</div>  
+</div>
+      
    
-   <li><label for="age">Squad ID:</label>
-   <input type="text" name="squad_id" value="<%= @id %>" required disabled></li>
-
-   <input type="submit" value="Add">
-</form>
-<br>
-<form action="/squads/<%= @id %>/students">
-   <input type="submit" value="Squad <%= @id %>">
-</form>
-
-<form action="/squads">
-   <input type="submit" value="Squads List">
-</form>
-
-
-
 </body>
 </html>

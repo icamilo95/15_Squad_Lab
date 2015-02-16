@@ -1,28 +1,39 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-   <meta charset="UTF-8">
-   <title>index</title>
-</head>
+<%= erb :'partials/_header' %>
 <body>
    
 
-<h3>List of squads</h3>
 
-<ul>
-<%   @squads.each do |squad|   %>
-<li>Name: <%= squad["name_sq"] %>     
+<ul class="list-group">
 
-- <a href="/squads/<%= squad["id_sq"] %>/students ">Students</a> 
-- <a href="/squads/<%= squad["id_sq"] %> ">Show</a> 
-- <a href="/squads/<%= squad["id_sq"] %>/edit">Edit</a> </li>
-<% end %>
+<table class="table table-striped">
+  <tr>
+      <li class="list-group-item active">
+         <td><h4>List of squads</h4></td><td></td>
+         <td><form action="/squads/new">
+         <input class="addsquad btn btn-warning" type="submit" value="Add new Squad">
+         </form></td>
+         <td></td>
+      </li>
+   </tr>
+
+  <%   @squads.each do |squad|   %>
+  <tr>   
+     <td class="namesquad"><%= squad["name_sq"] %></td>
+     <td><a href="/squads/<%= squad["id_sq"] %>/students ">Students</a></td>
+     <td><a href="/squads/<%= squad["id_sq"] %> ">Show</a></td>
+     <td><a href="/squads/<%= squad["id_sq"] %>/edit">Edit</a></td>
+  </tr>
+  <% end %>  
+</table>
 </ul>
 
 
-<form action="/squads/new">
-   <input type="submit" value="Add new Squad">
-</form>
+
+
+
+
+
+
 
 
 </body>

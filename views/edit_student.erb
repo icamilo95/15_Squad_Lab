@@ -1,34 +1,43 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-   <meta charset="UTF-8">
-   <title>Edit</title>
-</head>
+<%= erb :'partials/_header' %>
 <body>
    
 
-<h3>Edit Student</h3>
+<div class="col-xs-7">
+   <div class="panel panel-success">
+      <div class="panel-heading">
+         <h3 class="panel-title">Edit Student</h3><br>
+         <form action="/squads/<%= @student["squad_id"] %>/students/<%= @student["id_stu"] %>" method="POST">
+            <input type="hidden" name="_method" value="DELETE">
+            <input type="submit" value="Delete" class="btn btn-default">
+         </form>
+      </div>
+      <div class="panel-body list-group">
+         <form action="/squads/<%= @student["id_stu"] %>/students" method="POST">
+            <input type="hidden" name="_method" value="PUT">
+            <label for="name">Edit Name: </label>
+            <input class="form-control" type="text" value="<%= @student["name_stu"] %>" name="name">
+            <label for="name">Edit age: </label>
+            <input class="form-control" type="number" value="<%= @student["age"] %>" name="age">
+            <label for="name">Edit spirit animal: </label>
+            <input class="form-control" type="text" value="<%= @student["spirit_animal"] %>" name="animal">
+            <label for="name">Edit squad Id: </label>
+            <input class="form-control" type="text" value="<%= @student["squad_id"] %>" name="squad_id"><br>
+            <label for="name">Leader: </label>
+            <input type="checkbox" value="t" name="leader"><br><br>
+            <input type="submit" name="edit" class="btn btn-success">
+         </form>     
+      
 
 
- 
-<form action="/squads/<%= @student["id_stu"] %>/students" method="POST">
-   <input type="hidden" name="_method" value="PUT">
-   <label for="name">Edit Name: </label>
-   <input type="text" value="<%= @student["name_stu"] %>" name="name">
-   <label for="name">Edit age: </label>
-   <input type="number" value="<%= @student["age"] %>" name="age">
-   <label for="name">Edit spirit animal: </label>
-   <input type="text" value="<%= @student["spirit_animal"] %>" name="animal">
-   <label for="name">Edit squad Id: </label>
-   <input type="text" value="<%= @student["squad_id"] %>" name="squad_id">
-   <input type="submit" name="edit">
 
-</form>
 
-<form action="/squads/<%= @student["squad_id"] %>/students/<%= @student["id_stu"] %>" method="POST">
-   <input type="hidden" name="_method" value="DELETE">
-   <input type="submit" value="Delete">
-</form>
+
+   </div>
+
+</div>
+
+</div>
+
 
 
 

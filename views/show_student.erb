@@ -1,27 +1,40 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-   <meta charset="UTF-8">
-   <title>Document</title>
-</head>
+<%= erb :'partials/_header' %>
 <body>
    
-<h3>Student Info</h3>
+<div class="col-xs-7">
+<div class="panel panel-warning">
+  <div class="panel-heading">
+    <h3 class="panel-title">Student Info</h3>
+  </div>
 
-   <li>Name: <%= @student["name_stu"] %> </li>
-   <li>Age: <%= @student["age"] %></li>
-   <li>Spirit animal: <%= @student["spirit_animal"] %></li>
+  <div class="panel-body list-group">
 
-   <form action="/squads/<%= @student["squad_id"] %>/students">
-      <input type="submit" value="Squad <%= @student["squad_id"] %>">
+ 
+   <li class="list-group-item"><b>Name:</b> <%= @student["name_stu"] %> </li>
+   <li class="list-group-item"><b>Age:</b> <%= @student["age"] %></li>
+   <li class="list-group-item"><b>Spirit animal:</b> <%= @student["spirit_animal"] %></li>
+   <li class="list-group-item"><b>Leader:</b> <%= @student["is_leader"] %> </li><br>
+
+   <div class="col-xs-1 "></div> 
+   <div class="col-xs-4 ">
+     <form action="/squads/<%= @student["squad_id"] %>/students">
+      <input type="submit" value="Squad <%= @student["squad_id"] %>" class="btn btn-primary">
    </form>
+   </div>
+   <div class="col-xs-2 ">
+     <form action="/squads">
+      <input type="submit" value="Squads List" class="btn btn-warning">
+      </form>
+   </div>
    
    
+   
 
-   <form action="/squads">
-   <input type="submit" value="Squads List">
-   </form>
+   
 
+ </div>
+</div>
+</div>
 </body>
 </html>
 

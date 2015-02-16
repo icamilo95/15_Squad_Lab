@@ -1,0 +1,21 @@
+/*---INDEX---*/
+
+.list-group {
+   width: 500px;
+   margin-left: 100px;
+   margin-top: 60px;
+   text-align: center;
+   
+}
+
+.namesquad {
+   text-align: left;
+}
+
+/*---EDIT SQ---*/
+
+.editSquad {
+   width: 100px;
+   height: 100px;
+   background-color: red;
+}

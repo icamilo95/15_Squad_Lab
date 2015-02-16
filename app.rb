@@ -35,13 +35,13 @@ get '/squads' do
    erb :index
 end
 
-#------------ REQUIRE - ADD NEW SQUAD
+#------------ REQUIRE - ADD NEW SQUAD - REDIRECTS TO NEW 
 
 get '/squads/new' do
    erb :new
 end
 
-#------------ REQUIRE - ADD NEW STUDENT
+#------------ REQUIRE - ADD NEW STUDENT - REDIRECTS TO NEWSTUDENT
 
 get '/squads/:id/newstudent' do
    id = params[:id].to_i
@@ -63,12 +63,12 @@ end
 post '/squads/:id/students' do 
    id = params[:id]
    
-   @conn.exec("INSERT INTO students (name_stu,age,spirit_animal,squad_id) VALUES ($1,$2,$3,$4)",[params[:name],params[:age].to_i,params[:animal],id.to_i])
+   @conn.exec("INSERT INTO students (name_stu,age,spirit_animal,is_leader,squad_id) VALUES ($1,$2,$3,$4,$5)",[params[:name],params[:age].to_i,params[:animal], params[:leader],id.to_i])
 
 redirect to '/squads/'<< id << '/students'
 end
 
-#------------ SHOW SQUAD
+#------------ SHOW INFO FROM SQUAD
 
 get '/squads/:id_sq' do
    id = params[:id_sq].to_i
@@ -138,8 +138,9 @@ put '/squads/:id_sq/students' do
    age = params[:age]
    animal = params[:animal]
    squad_id = params[:squad_id]
+   leader = params[:leader]
   
-   @conn.exec("UPDATE students SET name_stu=($1),age=($2),spirit_animal=($3),squad_id=($4) WHERE id_stu=($5) ",[name,age,animal,squad_id,id])  
+   @conn.exec("UPDATE students SET name_stu=($1),age=($2),spirit_animal=($3),squad_id=($4),is_leader=($5) WHERE id_stu=($6) ",[name,age,animal,squad_id,leader,id])  
    redirect to '/squads/' << squad_id << '/students'
     
 end
