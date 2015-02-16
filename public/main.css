@@ -1,8 +1,13 @@
+/*---SHARED---*/
+.panel {
+margin-top: 30px;
+}
+
 /*---INDEX---*/
 
 .list-group {
    width: 500px;
-   margin-left: 100px;
+   margin-left: 50px;
    margin-top: 60px;
    text-align: center;
    
@@ -15,7 +20,7 @@
 /*---EDIT SQ---*/
 
 .editSquad {
-   width: 100px;
+   /*width: 100px;
    height: 100px;
-   background-color: red;
+   background-color: blue;*/
 }

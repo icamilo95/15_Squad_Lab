@@ -2,7 +2,7 @@
 <%= erb :'partials/_header' %>
 
 <body>
-<div class="col-xs-7">
+<div class="col-xs-5">
 <div class="panel panel-primary editSquad">
   <div class="panel-heading">
     <h3 class="panel-title">Add new Squad</h3>
@@ -12,9 +12,9 @@
 
 <form action="/squads" method="POST">
    <label for="name">New squad name:</label>
-   <input type="text" name="name" autofocus>
+   <input type="text" name="name" autofocus class="form-control">
    <label for="mascot">Mascot name:</label>
-   <input type="text" name="mascot">
+   <input type="text" name="mascot" class="form-control"><br>
    <input type="submit" value="Add squad" class="btn btn-success">
 </form>
 <br>

@@ -1,11 +1,16 @@
 <%= erb :'partials/_header' %>
+
 <body>
    
 
-<div class="col-xs-7">
+<div class="col-xs-5">
 <div class="panel panel-primary editSquad">
   <div class="panel-heading">
-    <h3 class="panel-title">Edit Squad</h3>
+    <h3 class="panel-title">Edit Squad</h3><br>
+    <form action="/squads/<%= @squad["id_sq"] %>" method="POST">
+      <input type="hidden" name="_method" value="DELETE">
+      <input type="submit" value="Delete" class="btn btn-default ">
+    </form>
   </div>
   <div class="panel-body">
       <form action="/squads/<%= @squad["id_sq"] %>" method="POST">
@@ -18,16 +23,10 @@
       </form>
   </div>
 </div>      
-  <div class="col-xs-1 "></div>
-  <div class="col-xs-2 ">
-    <form action="/squads/<%= @squad["id_sq"] %>" method="POST">
-      <input type="hidden" name="_method" value="DELETE">
-      <input type="submit" value="Delete Squad" class="btn btn-success ">
-    </form>      
-  </div>
+  
 </div>
 
-<div class="editSquad">d</div>
+
 
 
 
