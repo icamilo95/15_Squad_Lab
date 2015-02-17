@@ -4,9 +4,9 @@ $(document).ready(function() {
 
 function hiding() {
 
-   $('.test').on("click", function(){
-      alert("CAmilo");
-      $('.editSquad').fadeOut(3000);
+   $(".test").on("click", function(){
+      
+      $(".camilo").fadeOut(1000);
 
    });
 

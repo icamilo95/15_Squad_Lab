@@ -3,6 +3,10 @@
 margin-top: 30px;
 }
 
+body {
+   background-image: url("/img/XKXAHFY.png");
+}
+
 /*---INDEX---*/
 
 .list-group {
@@ -17,10 +21,17 @@ margin-top: 30px;
    text-align: left;
 }
 
+
+.table-striped {
+   background-color: rgba(240,240,240,0.9);
+}
+
 /*---EDIT SQ---*/
 
-.editSquad {
-   /*width: 100px;
+.test{
+   width: 100px;
    height: 100px;
-   background-color: blue;*/
+   background-color: blue;
+   
 }
+

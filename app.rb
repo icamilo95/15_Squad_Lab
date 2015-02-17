@@ -111,7 +111,7 @@ get '/squads/:id_sq/students' do
    end
 end
 
-#------------ SHOW STUDENTS FROM INDIVIDUAL SQUAD
+#------------ SHOW STUDENTS INFO
 
 get '/squads/:id_sq/students/:id_stu' do
    id_stu = params[:id_stu].to_i
